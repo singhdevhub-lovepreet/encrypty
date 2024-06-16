@@ -3,16 +3,18 @@
 
 #include "Task.hpp"
 #include <queue>
+#include <memory>
 
 class ProcessManagement
 {
-    public:
-        ProcessManagement();
-        bool submitToQueue(Task &task);
-        void processQueue(); 
-    private: 
-        std::queue<Task> taskQueue;
-        void executeTasks(const Task &task);
+public:
+    ProcessManagement();
+    bool submitToQueue(std::unique_ptr<Task> task);
+    void processQueue();
+    void executeTasks();
+
+private:
+    std::queue<std::unique_ptr<Task>> taskQueue;
 };
 
 #endif
