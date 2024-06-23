@@ -1,7 +1,7 @@
 #include <iostream>
 #include <filesystem>
-#include "ProcessManagement.hpp"
-#include "Task.hpp"
+#include "./src/app/processes/ProcessManagement.hpp"
+#include "./src/app/processes/Task.hpp"
 
 namespace fs = std::filesystem;
 

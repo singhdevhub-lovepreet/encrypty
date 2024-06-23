@@ -24,11 +24,9 @@ void ProcessManagement::executeTasks() {
             // Convert the task object to a string representation
             std::string taskStr = taskToExecute->toString();
 
-            // Set the task string as an environment variable
             setenv("TASK_DATA", taskStr.c_str(), 1);
 
-            // Execute the cryption.o object file
-            execv("cryption.o", args);
+            execv("Cryption.o", args);
 
             // If execv returns, there was an error
             std::cerr << "Error executing cryption.o" << std::endl;
