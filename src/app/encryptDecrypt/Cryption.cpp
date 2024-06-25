@@ -1,21 +1,12 @@
-#include <iostream>
+#include "Cryption.hpp"
 #include "../processes/Task.hpp"
 #include "../fileHandling/ReadEnv.cpp"
 
-int main(int argc, char* argv[]) {
-    if (argc != 2) {
-        std::cerr << "Usage: ./cryption <task_data>" << std::endl;
-        return 1;
-    }
-
-    std::string taskData = argv[1];
-    // Parse the task data and create a Task object
+int executeCryption(const std::string& taskData) {
     Task task = Task::fromString(taskData);
-
     ReadEnv env;
     std::string envKey = env.getenv();
     int key = std::stoi(envKey);
-
     if (task.action == Action::ENCRYPT) {
         char ch;
         while (task.f_stream.get(ch)) {
@@ -33,6 +24,5 @@ int main(int argc, char* argv[]) {
         }
         task.f_stream.close();
     }
-
     return 0;
 }

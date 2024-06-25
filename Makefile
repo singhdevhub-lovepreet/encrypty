@@ -1,39 +1,35 @@
 CXX = g++
+CXXFLAGS = -std=c++17 -g -Wall -I. -Isrc/app/encryptDecrypt -Isrc/app/fileHandling -Isrc/app/processes
 
-# Compiler flags
-CXXFLAGS = -std=c++17 -Wall -I. -Isrc/app/encryptDecrypt -IfileHandling -Iprocesses
+MAIN_TARGET = encrypt_decrypt
+CRYPTION_TARGET = cryption
 
-# Target executable
-TARGET = encrypt_decrypt
+MAIN_SRC = main.cpp \
+           src/app/processes/ProcessManagement.cpp \
+           src/app/fileHandling/IO.cpp \
+           src/app/fileHandling/ReadEnv.cpp \
+           src/app/encryptDecrypt/Cryption.cpp
 
-# Source files
-SRC = main.cpp \
-      src/app/processes/ProcessManagement.cpp \
-      src/app/fileHandling/IO.cpp \
-      src/app/fileHandling/ReadEnv.cpp
+CRYPTION_SRC = src/app/encryptDecrypt/CryptionMain.cpp \
+               src/app/encryptDecrypt/Cryption.cpp \
+               src/app/fileHandling/IO.cpp \
+               src/app/fileHandling/ReadEnv.cpp
 
-# Object files
-OBJ = $(SRC:.cpp=.o)
+MAIN_OBJ = $(MAIN_SRC:.cpp=.o)
+CRYPTION_OBJ = $(CRYPTION_SRC:.cpp=.o)
 
-# Cryption object file
-CRYPTION_OBJ = src/app/encryptDecrypt/Cryption.o
+all: $(MAIN_TARGET) $(CRYPTION_TARGET)
 
-# Rule to build the target
-$(TARGET): $(OBJ) $(CRYPTION_OBJ)
-	$(CXX) $(OBJ) $(CRYPTION_OBJ) -o $(TARGET)
+$(MAIN_TARGET): $(MAIN_OBJ)
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
-# Rule to build object files
+$(CRYPTION_TARGET): $(CRYPTION_OBJ)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Rule to build Cryption.o
-$(CRYPTION_OBJ):
-	$(MAKE) -C src/app/encryptDecrypt
-
-# Clean rule
 clean:
-	rm -f $(OBJ) $(TARGET)
-	$(MAKE) -C src/app/encryptDecrypt/cryption clean
+	rm -f $(MAIN_OBJ) $(CRYPTION_OBJ) $(MAIN_TARGET) $(CRYPTION_TARGET)
 
-# Phony targets
-.PHONY: clean
+.PHONY: clean all

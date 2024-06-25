@@ -27,7 +27,7 @@ int main(int argc, char* argv[]) {
 
                     if (f_stream.is_open()) {
                         Action taskAction = (action == "encrypt") ? Action::ENCRYPT : Action::DECRYPT;
-                        auto task = std::make_unique<Task>(std::move(f_stream), taskAction);
+                        auto task = std::make_unique<Task>(std::move(f_stream), taskAction, filePath);
                         processManagement.submitToQueue(std::move(task));
                     } else {
                         std::cout << "Unable to open file: " << filePath << std::endl;

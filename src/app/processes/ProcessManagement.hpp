@@ -10,7 +10,6 @@ class ProcessManagement
 public:
     ProcessManagement();
     bool submitToQueue(std::unique_ptr<Task> task);
-    void processQueue();
     void executeTasks();
 
 private:
