@@ -1,2 +1,3 @@
-# encrypty
-Encrypty: A file encryptor and decryptor written in C++
+# Encrypty: Your superfast File encryptor and decryptor
+
+Status:- In Progress
