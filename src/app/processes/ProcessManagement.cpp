@@ -4,6 +4,8 @@
 #include <cstring>
 #include <sys/wait.h>
 #include "../encryptDecrypt/Cryption.hpp"
+#include <ctime>
+#include <iomanip>
 
 ProcessManagement::ProcessManagement() {}
 
@@ -18,6 +20,10 @@ bool ProcessManagement::submitToQueue(std::unique_ptr<Task> task) {
         std::cout<<"Entering the child process"<<std::endl; 
         executeTask();
         std::cout<<"Exiting the child process"<<std::endl;
+        
+        std::time_t t = std::time(nullptr);
+        std::tm* now = std::localtime(&t);
+        std::cout << "Exiting the encryption/decryption at: " << std::put_time(now, "%Y-%m-%d %H:%M:%S") << std::endl;
     }
     return true;
 }
