@@ -4,6 +4,7 @@
 #include "Task.hpp"
 #include <queue>
 #include <memory>
+#include <semaphore.h>
 
 class ProcessManagement
 {
@@ -13,7 +14,15 @@ public:
     void executeTask();
 
 private:
-    std::queue<std::unique_ptr<Task>> taskQueue;
+    struct SharedMemory {
+        int size;
+        char tasks[1000][256];
+        int front;
+        int rear;
+    };
+    SharedMemory* sharedMem;
+    int shmFd;
+    const char* SHM_NAME = "/my_queue";
 };
 
 #endif
