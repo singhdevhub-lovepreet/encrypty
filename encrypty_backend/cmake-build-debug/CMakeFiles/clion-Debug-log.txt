@@ -1,0 +1,32 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja -G Ninja -S /Users/lovepreetsingh/Desktop/encrypty_backend -B /Users/lovepreetsingh/Desktop/encrypty_backend/cmake-build-debug
+-- The CXX compiler identification is AppleClang 15.0.0.15000309
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for C++ include any
+-- Looking for C++ include any - found
+-- Looking for C++ include string_view
+-- Looking for C++ include string_view - found
+-- Looking for C++ include coroutine
+-- Looking for C++ include coroutine - found
+-- Found Jsoncpp: /opt/homebrew/include  
+-- jsoncpp version:1.9.5
+-- Found OpenSSL: /opt/homebrew/lib/libcrypto.dylib (found version "3.3.1")  
+-- Found c-ares: /opt/homebrew/include  
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found UUID: /opt/homebrew/lib/libuuid.dylib
+-- Found ZLIB: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/lib/libz.tbd (found version "1.2.12")  
+-- Found SQLite3: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/lib/libsqlite3.tbd  
+-- Found Brotli: /opt/homebrew/lib/libbrotlidec.dylib  
+-- Looking for C++ include filesystem
+-- Looking for C++ include filesystem - found
+-- Performing Test CXX_FILESYSTEM_NO_LINK_NEEDED
+-- Performing Test CXX_FILESYSTEM_NO_LINK_NEEDED - Success
+-- use c++20
+-- Configuring done (5.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/lovepreetsingh/Desktop/encrypty_backend/cmake-build-debug

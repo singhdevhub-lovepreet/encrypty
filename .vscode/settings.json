@@ -55,5 +55,7 @@
         "list": "cpp",
         "map": "cpp",
         "charconv": "cpp"
-    }
+    },
+    "pieces.cloudCapabilities": "Blended",
+    "pieces.telemetry": true
 }
