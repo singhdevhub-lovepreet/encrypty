@@ -29,7 +29,12 @@ add_executable(${PROJECT_NAME} main.cc)
 #
 # and comment out the following lines
 find_package(Drogon CONFIG REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon)
+
+include_directories(/opt/homebrew/include)
+link_directories(/opt/homebrew/lib)
+
+# Link the jsoncpp library to your target
+target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon json)
 
 # ##############################################################################
 

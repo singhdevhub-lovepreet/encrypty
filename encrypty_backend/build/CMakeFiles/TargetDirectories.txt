@@ -1,0 +1,6 @@
+/Users/lovepreetsingh/Desktop/encrypty/encrypty_backend/build/CMakeFiles/encrypty_backend.dir
+/Users/lovepreetsingh/Desktop/encrypty/encrypty_backend/build/CMakeFiles/edit_cache.dir
+/Users/lovepreetsingh/Desktop/encrypty/encrypty_backend/build/CMakeFiles/rebuild_cache.dir
+/Users/lovepreetsingh/Desktop/encrypty/encrypty_backend/build/test/CMakeFiles/encrypty_backend_test.dir
+/Users/lovepreetsingh/Desktop/encrypty/encrypty_backend/build/test/CMakeFiles/edit_cache.dir
+/Users/lovepreetsingh/Desktop/encrypty/encrypty_backend/build/test/CMakeFiles/rebuild_cache.dir

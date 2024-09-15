@@ -54,8 +54,14 @@
         "__tree": "cpp",
         "list": "cpp",
         "map": "cpp",
-        "charconv": "cpp"
+        "charconv": "cpp",
+        "__availability": "cpp",
+        "functional": "cpp",
+        "future": "cpp",
+        "unordered_set": "cpp",
+        "version": "cpp"
     },
     "pieces.cloudCapabilities": "Blended",
-    "pieces.telemetry": true
+    "pieces.telemetry": true,
+    "cmake.sourceDirectory": "/Users/lovepreetsingh/Desktop/encrypty/encrypty_backend"
 }
