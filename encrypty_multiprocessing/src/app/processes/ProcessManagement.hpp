@@ -6,36 +6,41 @@
 #include <mutex>
 #include <atomic>
 #include <semaphore.h>
+#include <iostream>  // Required for std::cout in printSharedMemory
 
 class ProcessManagement
 {
-    sem_t* itemsSemaphore;
-    sem_t* emptySlotsSemaphore;
-
 public:
     ProcessManagement();
     ~ProcessManagement();
+
     bool submitToQueue(std::unique_ptr<Task> task);
     void executeTask();
 
 private:
     struct SharedMemory {
-        std::atomic<int> size;
-        char tasks[1000][256];
-        int front;
-        int rear;
+        std::atomic<int> size;    // Number of tasks in the queue
+        char tasks[1000][256];    // Task queue
+        std::atomic<int> front;   // Queue front
+        std::atomic<int> rear;    // Queue rear
 
+        // Helper function to print the state of the shared memory
         void printSharedMemory() {
-            std::cout<<size<<std::endl;
-            std::cout<<front<<std::endl;
-            std::cout<<rear<<std::endl;
+            std::cout << "Size: " << size.load() << std::endl;
+            std::cout << "Front: " << front.load() << std::endl;
+            std::cout << "Rear: " << rear.load() << std::endl;
         }
-
     };
-    SharedMemory* sharedMem;
-    int shmFd;
-    const char* SHM_NAME = "/my_queue";
-    std::mutex queueLock;
+
+    SharedMemory* sharedMem;       // Pointer to shared memory
+    int shmFd;                     // Shared memory file descriptor
+
+    sem_t* itemsSemaphore;         // Semaphore to track items in the queue
+    sem_t* emptySlotsSemaphore;    // Semaphore to track empty slots in the queue
+
+    const char* SHM_NAME = "/my_queue"; // Name for the shared memory object
+
+    std::mutex queueLock;          // Mutex to protect shared memory access
 };
 
-#endif
+#endif // PROCESS_MANAGEMENT_HPP
