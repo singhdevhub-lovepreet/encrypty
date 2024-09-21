@@ -37,7 +37,6 @@ ProcessManagement::~ProcessManagement() {
     munmap(sharedMem, sizeof(SharedMemory));
     shm_unlink(SHM_NAME);
 
-    // Close and unlink semaphores
     sem_close(itemsSemaphore);
     sem_close(emptySlotsSemaphore);
     sem_unlink("/items_semaphore");
@@ -70,8 +69,7 @@ void ProcessManagement::executeTask() {
     strcpy(taskStr, sharedMem->tasks[sharedMem->front]);
     sharedMem->front = (sharedMem->front + 1) % 1000;
     sharedMem->size.fetch_sub(1);
-    lock.unlock();
     sem_post(emptySlotsSemaphore);
-
     executeCryption(taskStr);
+    lock.unlock();
 }

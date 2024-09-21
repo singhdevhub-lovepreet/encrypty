@@ -6,7 +6,7 @@
 #include <mutex>
 #include <atomic>
 #include <semaphore.h>
-#include <iostream>  // Required for std::cout in printSharedMemory
+#include <iostream>  
 
 class ProcessManagement
 {
@@ -19,12 +19,11 @@ public:
 
 private:
     struct SharedMemory {
-        std::atomic<int> size;    // Number of tasks in the queue
-        char tasks[1000][256];    // Task queue
-        std::atomic<int> front;   // Queue front
-        std::atomic<int> rear;    // Queue rear
+        std::atomic<int> size;
+        char tasks[1000][256];
+        std::atomic<int> front;
+        std::atomic<int> rear;
 
-        // Helper function to print the state of the shared memory
         void printSharedMemory() {
             std::cout << "Size: " << size.load() << std::endl;
             std::cout << "Front: " << front.load() << std::endl;
@@ -32,15 +31,15 @@ private:
         }
     };
 
-    SharedMemory* sharedMem;       // Pointer to shared memory
-    int shmFd;                     // Shared memory file descriptor
+    SharedMemory* sharedMem;       
+    int shmFd;                     
 
-    sem_t* itemsSemaphore;         // Semaphore to track items in the queue
-    sem_t* emptySlotsSemaphore;    // Semaphore to track empty slots in the queue
+    sem_t* itemsSemaphore;
+    sem_t* emptySlotsSemaphore;    
 
-    const char* SHM_NAME = "/my_queue"; // Name for the shared memory object
+    const char* SHM_NAME = "/my_queue"; 
 
-    std::mutex queueLock;          // Mutex to protect shared memory access
+    std::mutex queueLock;
 };
 
-#endif // PROCESS_MANAGEMENT_HPP
+#endif 
