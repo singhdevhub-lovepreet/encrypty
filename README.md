@@ -32,8 +32,18 @@ The repository contains two primary branches, each focusing on a distinct parall
 
 To explore the implementations in each branch:
 
-1. **Clone the Repository:**
-
    ```bash
    git clone <repo-url>
-   cd your-repo
+   cd encrypty
+   git checkout <branch>
+   # Now make a virtual env and activate
+   python -m venv /myvenv
+   source myvenv/bin/activate
+   python makeDirs.py
+   make
+   ./encrypty
+   # type directory name which is created from makeDirs.py
+   test
+   ENCRYPT # after giving directory name, give ENCRYPT or DECRYPT to tell what to do
+   ```
+
