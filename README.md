@@ -1,4 +1,4 @@
-# Parallel Encryption and Decryption Project
+# Your Parallel Encryption and Decryption
 
 ## Overview
 
